@@ -37,6 +37,8 @@ async function start() {
     typeDefs,
     resolvers,
     context: ({ req }) => ({ user: req.user }),
+    introspection: true, 
+    playground: true 
   });
   await server.start();
 
