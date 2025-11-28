@@ -44,8 +44,8 @@ async function start() {
   server.applyMiddleware({ app, path: "/graphql", cors: false });
 
   app.listen(PORT, () => {
-    console.log("Server running on http://localhost:4000");
-    console.log("GraphQL at http://localhost:4000/graphql");
+    console.log("Server running on "+ PORT);
+    console.log("GraphQL at "+PORT+"/graphql");
   });
 }
 
