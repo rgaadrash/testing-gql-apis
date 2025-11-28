@@ -2,6 +2,7 @@ import express from "express";
 import { ApolloServer } from "apollo-server-express";
 import cors from "cors";
 import { typeDefs } from "./schema.js";
+import playground from "graphql-playground-middleware-express";
 import { resolvers } from "./resolvers.js";
 
 const PORT = process.env.PORT || 4000;
@@ -44,6 +45,9 @@ async function start() {
 
   // Make sure to disable apollo's CORS handling (we use global CORS)
   server.applyMiddleware({ app, path: "/graphql", cors: false });
+
+  // Custom gql playground route
+  app.get("/playground", playground({ endpoint: "/graphql" }));
 
   app.listen(PORT, () => {
     console.log("Server running on "+ PORT);
