@@ -4,6 +4,8 @@ import cors from "cors";
 import { typeDefs } from "./schema.js";
 import { resolvers } from "./resolvers.js";
 
+const PORT = process.env.PORT || 4000;
+
 const app = express();
 
 // Global middleware
@@ -41,7 +43,7 @@ async function start() {
   // Make sure to disable apollo's CORS handling (we use global CORS)
   server.applyMiddleware({ app, path: "/graphql", cors: false });
 
-  app.listen(4000, () => {
+  app.listen(PORT, () => {
     console.log("Server running on http://localhost:4000");
     console.log("GraphQL at http://localhost:4000/graphql");
   });
